@@ -15,14 +15,14 @@ This project has been deployed on [Render](vegecalssifier.onrendoer.com) followi
 - This is a simple CNN model using the ResNet34 Architecture. This model can be found prebuilt in FastAI and can be imported directly.
   - The choice of ResNet was made as it is a good default Image Classifier. Used the weights of the model pre-trained on ImageNet, i.e. implemented Transfer Learning.
   - The 34 layer variant was chosen simply because the using a higher layer variant was too taxing on the resources and the 34 layer model was good enough to capture the differences in vegetables.
-- Finetuning of hyper parameters was done based off the top-losses, and using the `lr_find()` function and the `lr recodered graph`.
+- Finetuning of hyper parameters was done based off the top-losses, and using the `lr_find()` function and the `lr recoderer graph`.
 
 
 
 ### The complete process (start -> finish)
 
 1. First, scraped [this](https://www.ranker.com/crowdranked-list/the-most-delicious-vegetables-v1 ) website to get a list of the popular vegetables, using _Regular Expressions_. The Python script is on [this file]( https://github.com/AceEV/VegetableClassifier/blob/master/util_files/get_vege_names.py ).
-2. Then, I started collecting images to build the dataset. I used the `googleimagesearch` Python library to scrap images from Google of each vegetable.[[source\]]( https://github.com/AceEV/VegetableClassifier/blob/master/util_files/download_images_from_google.py )
+2. Then, I started collecting images to build the dataset. I used the `googleimagesearch` Python library to scrap images from Google of each vegetable.[[source]]( https://github.com/AceEV/VegetableClassifier/blob/master/util_files/download_images_from_google.py )
    1. Used 50 images per vegetable as a rough start. On hindsight, going for much fewer, close to 25 _good_ images would have worked as well if not better, thanks to Data Augmentation.
    2. These images were put into a `downloads` folder, where each vegetable had its own folder, inside which the images were stored. These folder names act as the labels for the images.
 3. I used Google Colab to work no this project this has a better compute power than my local machine. I imported the dataset pretty easily as `ImageDataBunches`.
