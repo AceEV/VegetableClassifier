@@ -29,13 +29,13 @@ This project has been deployed on [Render](vegecalssifier.onrendoer.com) followi
 4. Next, I built the `CNN_Learner` - ResNet34 Model with ImageNet weights and performed the few preliminary epochs to test out the learner and the dataset. My training stopped abruptly as some images were corrupted.
    1. Used the `verify_images()` function to clean the dataset and re-ran the learning.
 5. Once, done, I plotted the top losses and found that a lot of the images were too vague. Example : images labelled as Avocado were in-fact guacamole, or images labeled as mushrooms were mushroom soup images :laughing:
-   1. FastAI has a widget to help clean these images that allow you to delete these images -[image_clearner()]( https://docs.fast.ai/widgets.image_cleaner.html ) but unfortunately, widget do not seem to work on Google Colab, so I had to do the image cleaning task manually.
+   1. FastAI has a widget to help clean these images that allow you to delete these images -[image_clearner()]( https://docs.fast.ai/widgets.image_cleaner.html ) but unfortunately, widget does not seem to work on Google Colab, so I had to do the image cleaning task manually.
    2. The `image_cleaner()` does not actually delete the images in the dataset, rather creates a `cleaned.csv` file with the images that can be used in the dataset, and the once to be omitted do not have an entry in it. I decided to manually replicate this process and ended up removing around 400 images. I decided to still leave a few dirty images as a part of the understanding working of the CNN Models.
 6. I got better results on this new dataset, both in training and validation dataset.
-7. I then used methods like [lr_find()]( https://docs.fast.ai/basic_train.html#lr_find ) to find better Learning Rate and altered the batch_sizes to get a better accuracy.
-8. On plotting top_losses, most fails happened due to the fact the some images had either off-center images, vegetables were shown shredded and looked similar even to the human eye etc. A lot of this can be attributed to the quality of the dataset. I tried having it predict some pictures I clicked from the local supermarket and it made good predictions.
-9. I chose to stop the project here but I can very easily be improved, simply by training for more epochs, **cleaning the dataset** more(major cause) and adding small changes like tweaking the regularization etc.
-10. I followed this [official documentation]( https://course.fast.ai/deployment_render.html ) to host the classifier as a WebApp. [Try it out :smile:](vegeclassifier.onrender.com)!
+7. I then used methods like [lr_find()]( https://docs.fast.ai/basic_train.html#lr_find ) to find better Learning Rates and altered the batch sizes to get a better accuracy.
+8. On plotting `top_losses`, most fails happened due to the fact the some images had either off-center images, vegetables were shown shredded or looked similar even to the human eye etc. A lot of this can be attributed to the quality of the dataset. **I tried having it predict some pictures I clicked from the local supermarket and it made good predictions.**
+9. I chose to stop the project here but it can very easily be improved, simply by training for more epochs, **cleaning the dataset** more(major cause) and adding small changes like tweaking the regularization etc.
+10. I followed this [official documentation]( https://course.fast.ai/deployment_render.html ) to host the classifier as a WebApp.
 
 The main Notebook is [vege_classifier.ipynb]( https://github.com/AceEV/VegetableClassifier/blob/master/vegetable_classifier.ipynb ). I used a `vege_classifier_train.ipynb` to do some initial analysis.
 
